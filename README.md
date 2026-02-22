@@ -9,6 +9,7 @@ Each skill is a self-contained module that extends an agent's capabilities with 
 | Skill | Description |
 |-------|-------------|
 | [github-gist](./github-gist/) | CRUD operations on GitHub Gists — create, read, update, delete, list, search, and manage files. Use gists as lightweight snippet storage or key-value store. |
+| [atlassian-confluence](./atlassian-confluence/) | CRUD operations on Confluence Cloud pages — create, read, update, delete, list, search pages and spaces via CQL. Publish documentation, build page trees, search wiki content. |
 
 ## What is a Skill?
 
