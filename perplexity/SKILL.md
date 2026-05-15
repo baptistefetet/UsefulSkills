@@ -1,12 +1,11 @@
 ---
 name: perplexity
 description: >
-  Interroge Perplexity AI (perplexity.ai) sans clé API ni token. Utilise
-  uniquement quand l'utilisateur mentionne explicitement "perplexity" — pour
-  faire une recherche web via perplexity, poser une question à perplexity,
-  obtenir une réponse synthétisée par perplexity, ou récupérer des liens via
-  la recherche perplexity. Ne pas utiliser pour des recherches web génériques
-  où "perplexity" n'est pas nommément cité.
+  Query Perplexity AI (perplexity.ai) without an API key or token. Use this
+  skill only when the user explicitly mentions "perplexity" — e.g. to run a
+  web search via perplexity, ask perplexity a question, get a synthesized
+  answer from perplexity, or fetch links via perplexity search. Do not use
+  for generic web searches where "perplexity" is not named.
 allowed-tools:
   - Bash(node:*)
 ---
