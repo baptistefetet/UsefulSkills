@@ -4,7 +4,7 @@ This repository is a collection of self-contained skills for AI code agents.
 
 ## Creating a New Skill
 
-Every skill follows the same structure:
+Skills wrapping an HTTP API with credentials follow this structure:
 
 ```
 skill-name/
@@ -13,6 +13,11 @@ skill-name/
 └── scripts/
     └── main-script.sh # Executable helper script (required)
 ```
+
+Other skills keep only what they need:
+
+- **No credentials** (e.g. `perplexity`): no `.env.sample`. A script may use another language when bash, `curl` and `jq` cannot do the job (`perplexity.js`, Node built-ins only).
+- **Delegation to an installed CLI** (e.g. `copilot`, `codex-review`): `SKILL.md` only. It holds the command template and its flags, how to build the prompt, and how to report the result. The sections below apply where relevant.
 
 ### SKILL.md
 
