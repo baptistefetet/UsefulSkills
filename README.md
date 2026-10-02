@@ -12,6 +12,7 @@ Each skill is a self-contained module that extends an agent's capabilities with 
 | [atlassian-confluence](./atlassian-confluence/) | CRUD operations on Confluence Cloud pages — create, read, update, delete, list, search pages and spaces via CQL. Publish documentation, build page trees, search wiki content. |
 | [copilot](./copilot/) | Delegate a task to GitHub Copilot CLI. Use when the user asks for Copilot's opinion or explicitly invokes `/copilot`. |
 | [perplexity](./perplexity/) | Query Perplexity AI without an API key or token. Two modes: `ask` (synthesized answer + sources) and `search` (web results only). Tokenless reimplementation of [mishamyrt/perplexity-web-api-mcp](https://github.com/mishamyrt/perplexity-web-api-mcp). |
+| [codex-review](./codex-review/) | Get a code review or second opinion from OpenAI's Codex CLI on a diff, bug, design or plan: read-only sandbox, follow-ups in the same session (`resume`/`fork`), background runs for long reviews. |
 
 ## What is a Skill?
 
