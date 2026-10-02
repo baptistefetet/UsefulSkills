@@ -21,13 +21,12 @@ timeout -k 10s 600 codex exec -s read-only --skip-git-repo-check -C <project_dir
 
 - `-s read-only` — enforced (a write fails with `Read-only file system`); "do
   not modify" in the prompt is only advisory. Codex reads the whole filesystem
-  with ordinary permissions: even as root, a file without access for its user
-  (e.g. a mode-660 `.env` owned by another account) stays unreadable, so give
+  with ordinary permissions: even as root, a file owned by another account with
+  no read access for others (e.g. a mode-660 `.env`) stays unreadable, so give
   it the facts it needs. `--yolo` instead only when Codex must write (fixes,
   build): it then has full root privileges. Middle ground: `-s workspace-write`.
 - `-C <dir>` — root of the project being reviewed.
-- `model_reasoning_effort` — `xhigh` for opinions, designs and open audits;
-  `high` is enough for a diff review, and faster.
+- `model_reasoning_effort="xhigh"` — always, for every kind of call.
 - `-o` — final answer only; the log holds the full transcript, read it only on failure.
 - `</dev/null` — Codex appends piped stdin to the prompt and hangs on an idle
   pipe. Long prompt: `-` instead of `"<prompt>"`, and a `<<'EOF'` heredoc instead of `</dev/null`.
@@ -43,9 +42,9 @@ when Codex fails.
 ```bash
 # run_in_background: true
 out=/tmp/codex_<topic>.md; log=/tmp/codex_<topic>.log; rm -f "$out" "$log"
-timeout -k 10s 1500 codex exec <same flags> -o "$out" ... >"$log" 2>&1; echo "exit=$?" >>"$log"
+timeout -k 10s 1500 codex exec <same flags> -o "$out" [subcommand] "<prompt>" </dev/null >"$log" 2>&1; echo "__codex_exit=$?" >>"$log"
 # later, foreground (timeout 600000; repeat if it times out), before replying:
-until grep -q '^exit=' "$log"; do sleep 5; done; tail -1 "$log"; cat "$out"; grep -m1 'session id:' "$log"
+until grep -q '^__codex_exit=' "$log"; do sleep 5; done; tail -1 "$log"; cat "$out"; grep -m1 'session id:' "$log"
 ```
 
 ## Sessions
